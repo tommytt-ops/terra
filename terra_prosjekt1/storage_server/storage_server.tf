@@ -30,9 +30,15 @@ resource "openstack_compute_instance_v2" "dev_server" {
   }
 
   provisioner "remote-exec" {
-    inline = [
-      "sudo apt update",
-      "sudo apt install -y emacs git jed", # Installs git, emacs, and jed
-    ]
-  }
+  inline = [
+    "sleep 20",
+    "sudo apt-get update",
+    "sudo apt install -y software-properties-common",
+    "sudo add-apt-repository -y ppa:gluster/glusterfs-7",
+    "sudo apt update",
+    "sudo apt install -y glusterfs-server"
+  ]
+}
+
+
 }
