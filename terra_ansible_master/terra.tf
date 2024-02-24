@@ -47,19 +47,20 @@ resource "openstack_compute_instance_v2" "slave3_instance" {
                 "sudo apt install ansible -y",
                 "sudo apt-get install -y git-all",
                 "ssh-keygen -q -N \"\" -f /home/ubuntu/.ssh/id_rsa",
-                "export OS_CLOUD=openstack",
-                "openstack keypair delete masterKey",
-                "openstack keypair create --public-key ~/.ssh/id_rsa.pub masterKey",
-                "sudo git clone https://github.com/tommytt-ops/terra"
-
-
-
+                "sudo git clone https://github.com/tommytt-ops/terra",
             ]
         }
 
         provisioner "file" {
             source      = "/Users/tommytran/.config/openstack/clouds.yml" 
             destination = "/home/ubuntu/.config/openstack/clouds.yml"
+        }
+
+        provisioner "remote-exec" {
+         inline = [
+                "openstack --os-cloud=openstack keypair delete masterKey",
+                "openstack --os-cloud=openstack keypair create --public-key ~/.ssh/id_rsa.pub masterKey",       
+            ]
         }
 
 }
