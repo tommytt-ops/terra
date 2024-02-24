@@ -49,7 +49,8 @@ resource "openstack_compute_instance_v2" "slave3_instance" {
                 "ssh-keygen -y",
                 "export OS_CLOUD=openstack",
                 "openstack keypair delete masterKey",
-                "openstack keypair create --public-key ~/.ssh/id_rsa.pub masterKey"
+                "openstack keypair create --public-key ~/.ssh/id_rsa.pub masterKey",
+                "sudo git clone https://github.com/tommytt-ops/terra"
 
 
 
