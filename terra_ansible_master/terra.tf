@@ -45,7 +45,13 @@ resource "openstack_compute_instance_v2" "slave3_instance" {
                 "sudo apt -y install software-properties-common",
                 "sudo apt-add-repository ppa:ansible/ansible -y",
                 "sudo apt install ansible -y",
-                "sudo apt-get install -y git-all"
+                "sudo apt-get install -y git-all",
+                "ssh-keygen -y",
+                "export OS_CLOUD=openstack",
+                "openstack keypair delete masterKey",
+                "openstack keypair create --public-key ~/.ssh/id_rsa.pub masterKey"
+
+
 
             ]
         }
