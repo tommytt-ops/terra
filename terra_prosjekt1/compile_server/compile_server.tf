@@ -10,7 +10,7 @@ provider "openstack" {
         cloud = "openstack" # defined in ~C:/Users/Tommy/Desktop/.config/openstack/clouds.yml
 }
 
-resource "openstack_compute_instance" "Compile_Server" {
+resource "openstack_compute_instance_v2" "Compile_Server" {
   count             = 2 # Creates two instances
   name              = "CompileServer-${count.index}"
   image_name        = "ubuntu-22.04-LTS"
