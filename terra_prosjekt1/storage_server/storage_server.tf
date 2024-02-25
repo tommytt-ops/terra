@@ -10,9 +10,9 @@ provider "openstack" {
         cloud = "openstack" # defined in ~C:/Users/Tommy/Desktop/.config/openstack/clouds.yml
 }
 
-resource "openstack_compute_instance_v2" "dev_server" {
+resource "openstack_compute_instance_v2" "storage_server" {
   count             = 2 # Creates two instances
-  name              = "DevServer-${count.index}"
+  name              = "StorageServer-${count.index}"
   image_name        = "ubuntu-22.04-LTS"
   flavor_name       = "css.1c2r.10g" # Ensure this matches a single CPU configuration in your OpenStack
   key_pair          = "masterKey"
