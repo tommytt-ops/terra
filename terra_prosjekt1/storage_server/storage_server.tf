@@ -15,7 +15,7 @@ resource "openstack_compute_instance_v2" "dev_server" {
   name              = "DevServer-${count.index}"
   image_name        = "ubuntu-22.04-LTS"
   flavor_name       = "css.1c2r.10g" # Ensure this matches a single CPU configuration in your OpenStack
-  key_pair          = "key"
+  key_pair          = "masterKey"
   security_groups   = ["default"]
 
   network {
