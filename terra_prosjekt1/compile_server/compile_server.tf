@@ -32,7 +32,9 @@ resource "openstack_compute_instance_v2" "Compile_Server" {
   provisioner "remote-exec" {
     inline = [
       "sleep 20",
-      "sudo apt update",
+      "export DEBIAN_FRONTEND=noninteractive",
+      "sudo apt-get update",
+      "sudo apt-get -yq upgrade"
       "sudo apt install -y gcc", 
       "sudo apt install -y make",
       "sudo apt install -y binutils"
