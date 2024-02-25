@@ -62,4 +62,11 @@ resource "openstack_compute_instance" "master_instance" {
             destination = "/home/ubuntu/.config/openstack/clouds.yml"
         }
 
+        provisioner "remote-exec" {
+         inline = [
+                "openstack --os-cloud=openstack keypair delete masterKey",
+                "openstack --os-cloud=openstack keypair create --public-key ~/.ssh/id_rsa.pub masterKey",       
+            ]
+        }
+
 }

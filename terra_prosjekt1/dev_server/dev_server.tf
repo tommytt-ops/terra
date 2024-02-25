@@ -7,7 +7,7 @@ terraform {
 }
 
 provider "openstack" {
-        cloud = "openstack" # defined in ~C:/Users/Tommy/Desktop/.config/openstack/clouds.yml
+        cloud = "openstack" 
 }
 
 resource "openstack_compute_instance_v2" "dev_server" {
@@ -15,7 +15,7 @@ resource "openstack_compute_instance_v2" "dev_server" {
   name              = "DevServer-${count.index}"
   image_name        = "ubuntu-22.04-LTS"
   flavor_name       = "css.1c1r.10g" # Ensure this matches a single CPU configuration in your OpenStack
-  key_pair          = "key"
+  key_pair          = "masterKey"
   security_groups   = ["default"]
 
   network {
@@ -25,7 +25,7 @@ resource "openstack_compute_instance_v2" "dev_server" {
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    private_key = file("~/.ssh/id_rsa")
+    private_key = file("/home/ubuntu/.ssh/id_rsa")
     host        = self.access_ip_v4
   }
 
@@ -39,4 +39,3 @@ resource "openstack_compute_instance_v2" "dev_server" {
     ]
   }
 }
- 
