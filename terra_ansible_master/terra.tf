@@ -10,7 +10,7 @@ provider "openstack" {
         cloud = "openstack" # defined in ~/Users/tommytran/.config/openstack/clouds.yaml
 }
 
-resource "openstack_compute_instance_v2" "slave3_instance" {
+resource "openstack_compute_instance" "master_instance" {
         name = "master_pro1"
         image_name = "ubuntu-22.04-LTS"
         flavor_name = "C2R4_10G"
@@ -25,7 +25,7 @@ resource "openstack_compute_instance_v2" "slave3_instance" {
          type = "ssh"
          user = "ubuntu"
          private_key = "${file("~/.ssh/id_rsa")}"
-         host = openstack_compute_instance_v2.slave3_instance.access_ip_v4
+         host = openstack_compute_instance.master_instance.access_ip_v4
         }
 
         provisioner "remote-exec" {
@@ -50,7 +50,7 @@ resource "openstack_compute_instance_v2" "slave3_instance" {
                 "export OS_CLOUD=openstack",
                 "openstack keypair delete masterKey",
                 "openstack keypair create --public-key ~/.ssh/id_rsa.pub masterKey",
-                "sudo git clone https://github.com/tommytt-ops/terra"
+                "sudo git clone https://github.com/tommytt-ops/terra",
 
 
 
