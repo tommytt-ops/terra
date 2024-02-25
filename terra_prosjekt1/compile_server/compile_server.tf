@@ -32,12 +32,11 @@ resource "openstack_compute_instance_v2" "Compile_Server" {
   provisioner "remote-exec" {
     inline = [
       "sleep 20",
-      "export DEBIAN_FRONTEND=noninteractive",
       "sudo apt-get update",
-      "sudo apt-get -yq upgrade",
-      "sudo apt install -y gcc", 
+      "sudo DEBIAN_FRONTEND=noninteractive apt-get install -y gcc", 
+      "if [ -f /var/run/reboot-required ]; then sudo shutdown -r +1 'Scheduled reboot after GCC installation'; fi",
       "sudo apt install -y make",
-      "sudo apt install -y binutils"
+      "sudo apt install -y binutils",
     
     ]
   }
