@@ -35,7 +35,7 @@ resource "openstack_compute_instance_v2" "Compile_Server" {
       "sudo apt update",
       "sudo apt install -y gcc", 
       "sudo apt install -y make",
-      "sudo apt install binutils"
+      "sudo apt install -y binutils"
     
     ]
   }
