@@ -10,7 +10,7 @@ provider "openstack" {
         cloud = "openstack" # defined in ~/Users/tommytran/.config/openstack/clouds.yaml
 }
 
-resource "openstack_compute_instance" "docker_instance" {
+resource "openstack_compute_instance_v2" "docker_instance" {
         name = "docker_server"
         image_name = "ubuntu-22.04-LTS"
         flavor_name = "C2R4_10G"
