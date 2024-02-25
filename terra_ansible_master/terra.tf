@@ -50,7 +50,7 @@ resource "openstack_compute_instance" "master_instance" {
                 "export OS_CLOUD=openstack",
                 "openstack keypair delete masterKey",
                 "openstack keypair create --public-key ~/.ssh/id_rsa.pub masterKey",
-                "sudo git clone https://github.com/tommytt-ops/terra",
+                "git clone https://github.com/tommytt-ops/terra",
 
 
 
