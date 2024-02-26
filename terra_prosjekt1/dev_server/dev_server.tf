@@ -25,7 +25,7 @@ resource "openstack_compute_instance_v2" "dev_server" {
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    private_key = file("/home/ubuntu/.ssh/id_rsa")
+    private_key = file("~/.ssh/id_rsa")
     host        = self.access_ip_v4
   }
 
