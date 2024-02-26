@@ -1,0 +1,35 @@
+---
+- name: Manage User Accounts for Development Servers
+  hosts: all
+  become: yes
+  vars:
+    users:
+      - name: bob
+      - name: janet
+        groups: developers
+      - name: alice
+      - name: tim
+        groups: developers
+    sudoers:
+      - name: "%sudo ALL=(ALL) NOPASSWD:ALL"
+
+  tasks:
+    - name: Ensure group 'developers' exists
+      group:
+        name: developers
+        state: present
+
+    - name: Ensure user accounts are created and have sudo access
+      user:
+        name: "{{ item.name }}"
+        groups: "{{ item.groups | default(omit) }}"
+        append: yes
+      loop: "{{ users }}"
+
+    - name: Ensure sudoers file is configured for passwordless access
+      lineinfile:
+        path: /etc/sudoers
+        line: "{{ item.name }}"
+        validate: 'visudo -cf %s'
+      loop: "{{ sudoers }}"
+      when: ansible_os_family == "Debian" or ansible_os_family == "RedHat"
