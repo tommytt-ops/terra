@@ -25,7 +25,7 @@ resource "openstack_compute_instance_v2" "master_instance" {
          type = "ssh"
          user = "ubuntu"
          private_key = "${file("~/.ssh/id_rsa")}"
-         host = openstack_compute_instance.master_instance.access_ip_v4
+         host = self.access_ip_v4
         }
 
         provisioner "remote-exec" {
