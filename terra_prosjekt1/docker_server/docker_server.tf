@@ -7,7 +7,7 @@ terraform {
 }
 
 provider "openstack" {
-        cloud = "openstack" # defined in ~/Users/tommytran/.config/openstack/clouds.yaml
+        cloud = "openstack" 
 }
 
 resource "openstack_compute_instance_v2" "docker_instance" {
