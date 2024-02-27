@@ -11,7 +11,7 @@ provider "openstack" {
 }
 
 resource "openstack_compute_instance_v2" "master_instance" {
-        name = "master_pro2"
+        name = "master_pro1"
         image_name = "ubuntu-22.04-LTS"
         flavor_name = "C2R4_10G"
         key_pair = "key"
