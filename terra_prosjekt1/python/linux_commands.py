@@ -40,9 +40,8 @@ def truncate_ansible_hosts():
     except Exception as e:
         print(f"Failed to run truncate command: {e}")
 
-truncate_ansible_hosts()
 
-truncate_ansible_hosts()
-ip_list = all_server_list()
+
+
 
 
