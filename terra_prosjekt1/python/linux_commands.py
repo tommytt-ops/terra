@@ -40,6 +40,30 @@ def truncate_ansible_hosts():
     except Exception as e:
         print(f"Failed to run truncate command: {e}")
 
+import subprocess
+import os
+
+def apply_terraform():
+
+    terraform_directory = './'
+
+    os.chdir(terraform_directory)
+    init_command = "terraform init"
+    subprocess.run(init_command, check=True, shell=True)
+
+    apply_command = "terraform apply -auto-approve"
+    result = subprocess.run(apply_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
+
+    if result.returncode == 0:
+        print("Terraform apply was successful")
+        print(result.stdout)
+    else:
+        print("Terraform apply failed")
+        print(result.stderr)
+
+  
+
+
 
 
 
