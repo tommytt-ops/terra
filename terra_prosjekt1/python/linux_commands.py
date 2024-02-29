@@ -88,7 +88,11 @@ def run_playbook():
         print("Playbook failed")
         print(result.stderr)
 
+def testy():
 
+    new_dir = "./"
+    os.chdir(new_dir) 
+    print(os.getcwd())
 
 
   
