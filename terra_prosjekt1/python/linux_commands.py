@@ -42,6 +42,7 @@ def truncate_ansible_hosts():
 
 truncate_ansible_hosts()
 
-##########################################################################################################################################################
+truncate_ansible_hosts()
+ip_list = all_server_list()
 
 
