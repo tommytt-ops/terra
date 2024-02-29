@@ -5,13 +5,13 @@ import os
 
 if __name__ == "__main__":
 
-    original_directory = os.getcwd()
-    apply_terraform()
+    #original_directory = os.getcwd()
+    #apply_terraform()
     ip_list = all_server_list()
-    truncate_ansible_hosts()
+    #truncate_ansible_hosts()
     append_ips_to_hosts(ip_list)
-    os.chdir(original_directory)
-    run_playbook()
+    #os.chdir(original_directory)
+    #run_playbook()
 
    
     
