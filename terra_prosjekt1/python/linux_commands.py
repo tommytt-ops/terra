@@ -43,15 +43,12 @@ def truncate_ansible_hosts():
         print(f"Failed to run truncate command: {e}")
 
 def apply_terraform():
-
     terraform_directory = '../'
+    os.chdir(terraform_directory)  
 
-    os.chdir(terraform_directory)
-    init_command = "terraform init"
-    subprocess.run(init_command, check=True, shell=True)
+    subprocess.run("terraform init", shell=True, check=True)
 
-    apply_command = "echo yes | terraform apply"
-    result = subprocess.run(apply_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
+    result = subprocess.run("echo yes | terraform apply", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
     if result.returncode == 0:
         print("Terraform apply was successful")
@@ -60,6 +57,7 @@ def apply_terraform():
         print("Terraform apply failed")
         print(result.stderr)
 
+    original_directory = os.getcwd()
   
 
 
