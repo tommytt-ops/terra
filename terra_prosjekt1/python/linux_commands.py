@@ -1,5 +1,7 @@
 import subprocess
 import json
+import subprocess
+import os
 
 def all_server_list():
     ip_list = []  
@@ -40,12 +42,9 @@ def truncate_ansible_hosts():
     except Exception as e:
         print(f"Failed to run truncate command: {e}")
 
-import subprocess
-import os
-
 def apply_terraform():
 
-    terraform_directory = './'
+    terraform_directory = '../'
 
     os.chdir(terraform_directory)
     init_command = "terraform init"
