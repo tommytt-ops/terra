@@ -7,5 +7,5 @@ if __name__ == "__main__":
     apply_terraform()
     ip_list = all_server_list()
     truncate_ansible_hosts()
-    append_ips_to_hosts()
+    append_ips_to_hosts(ip_list)
     run_playbook()
