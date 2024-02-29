@@ -1,4 +1,4 @@
-from linux_commands import all_server_list, truncate_ansible_hosts, apply_terraform, append_ips_to_hosts, run_playbook, testy
+from linux_commands import all_server_list, truncate_ansible_hosts, apply_terraform, append_ips_to_hosts, run_playbook
 import os
 
 
