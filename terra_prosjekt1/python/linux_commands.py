@@ -77,7 +77,7 @@ def append_ips_to_hosts(ip_list):
         print(result.stderr)
 
 def run_playbook():
-    playbook_directory = "./terra_prosjekt1/ansible_playbook"
+    playbook_directory = "../ansible_playbook"
     os.chdir(playbook_directory)  
 
     result = subprocess.run("ansible-playbook -i /etc/ansible/hosts prosjekt1.ansible.yml", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
@@ -90,7 +90,7 @@ def run_playbook():
 
 def testy():
 
-    new_dir = "../"
+    new_dir = "../ansible_playbook"
     os.chdir(new_dir) 
     print(os.getcwd())
 

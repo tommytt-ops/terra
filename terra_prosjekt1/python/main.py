@@ -12,6 +12,7 @@ if __name__ == "__main__":
     #append_ips_to_hosts(ip_list)
     #os.chdir(original_directory)
     #run_playbook()
-   testy()
+    testy()
+   
     
    
