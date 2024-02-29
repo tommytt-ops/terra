@@ -64,7 +64,7 @@ def apply_terraform():
 def append_ips_to_hosts(ip_list):
     ip_str = "\n".join(ip_list)
     
-    echo_command = f"echo -e \"{ip_str}\""
+    echo_command = f"echo \"{ip_str}\""
     
     command = f"{echo_command} | sudo tee -a /etc/ansible/hosts"
  
