@@ -18,8 +18,11 @@ def all_server_list():
                 server_id = server_json['ID']
                 server_name = server_json['Name']
                 server_status = server_json['Status']
-  
-                server_info_list.append({"ID": server_id, "Name": server_name, "Status": server_status})
+                server_ip = server_json['Network']
+
+                if server_ip != "acit=10.196.38.184" or server_ip != "acit=10.196.39.91":
+                    server_info_list.append(server_ip)
+                    
         except json.JSONDecodeError as e:
             print(f"Error parsing JSON: {e}")
     else:
