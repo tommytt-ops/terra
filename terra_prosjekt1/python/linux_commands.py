@@ -90,7 +90,7 @@ def run_playbook():
 
 def testy():
 
-    new_dir = "./"
+    new_dir = "../"
     os.chdir(new_dir) 
     print(os.getcwd())
 
