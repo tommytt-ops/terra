@@ -50,7 +50,7 @@ def apply_terraform():
     init_command = "terraform init"
     subprocess.run(init_command, check=True, shell=True)
 
-    apply_command = "terraform apply -auto-approve"
+    apply_command = "yes | terraform apply"
     result = subprocess.run(apply_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
 
     if result.returncode == 0:
