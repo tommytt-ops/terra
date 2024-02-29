@@ -47,10 +47,10 @@ def apply_terraform():
     terraform_directory = '../'
 
     os.chdir(terraform_directory)
-    #init_command = "terraform init"
-    #subprocess.run(init_command, check=True, shell=True)
+    init_command = "terraform init"
+    subprocess.run(init_command, check=True, shell=True)
 
-    apply_command = "terraform apply"
+    apply_command = "echo yes | terraform apply"
     result = subprocess.run(apply_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
 
     if result.returncode == 0:
