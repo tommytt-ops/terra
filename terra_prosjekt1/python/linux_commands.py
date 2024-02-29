@@ -61,7 +61,6 @@ def apply_terraform():
 
 
 def append_ips_to_hosts(ip_list):
-  
     ip_str = "\n".join(ip_list)
     
     echo_command = f"echo -e \"{ip_str}\""
@@ -75,6 +74,19 @@ def append_ips_to_hosts(ip_list):
     else:
         print("Failed to append IPs to /etc/ansible/hosts")
         print(result.stderr)
+
+def run_playbook():
+    playbook_directory = '../ansible_playbook'
+    os.chdir(playbook_directory)  
+
+    result = subprocess.run("ansible-playbook -i /etc/ansible/hosts your-playbook.yml", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+    if result.returncode == 0:
+        print("Playbook applied")
+    else:
+        print("Playbook failed")
+        print(result.stderr)
+
 
   
 
