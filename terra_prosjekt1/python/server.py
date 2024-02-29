@@ -18,7 +18,8 @@ def all_server_list():
                 
                 server_ip = server_json['Networks']
                 server_info_list.append(server_ip)
-
+                
+            server_info_list = server_info_list[:-2]
         except json.JSONDecodeError as e:
             print(f"Error parsing JSON: {e}")
     else:
