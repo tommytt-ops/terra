@@ -58,6 +58,24 @@ def apply_terraform():
         print(result.stderr)
 
     original_directory = os.getcwd()
+
+
+def append_ips_to_hosts(ip_list):
+  
+    ip_str = "\n".join(ip_list)
+    
+    echo_command = f"echo -e \"{ip_str}\""
+    
+    command = f"{echo_command} | sudo tee -a /etc/ansible/hosts"
+ 
+    result = subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+ 
+    if result.returncode == 0:
+        print("IPs successfully appended to /etc/ansible/hosts")
+    else:
+        print("Failed to append IPs to /etc/ansible/hosts")
+        print(result.stderr)
+
   
 
 
