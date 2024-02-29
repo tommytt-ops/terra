@@ -19,8 +19,8 @@ def all_server_list():
                 if 'acit' in network_info and isinstance(network_info['acit'], list):
                     ip_list.extend(network_info['acit'])
            
-            if len(ip_list) > 2:
-                ip_list = ip_list[:-2]
+            if len(ip_list) > 1:
+                ip_list = ip_list[:-1]
 
         except json.JSONDecodeError as e:
             print(f"Error parsing JSON: {e}")
